@@ -25,49 +25,52 @@ export function DevPanel() {
 
   if (!import.meta.env.DEV || !mounted) return null
 
+  const cell = 'max-w-[170px] truncate border-b border-border px-1.5 py-0.5 text-left'
+
   return (
-    <div className="devpanel">
+    <div className="fixed top-3 right-3 z-[80] flex flex-col items-end gap-1.5 text-[0.72rem]">
       <button
-        className="devpanel-toggle"
+        className="rounded-full border border-border bg-elevated px-2.5 py-1 text-muted-foreground hover:text-foreground"
         onClick={() => setOpen((v) => !v)}
         title="Inspect Electric collections"
       >
         shapes
       </button>
       {open && (
-        <div className="devpanel-body">
-          <div className="devpanel-head">Electric collections</div>
-          <table>
+        <div className="max-h-[40vh] w-[min(540px,90vw)] overflow-auto rounded-[10px] border border-border bg-sidebar p-2.5 shadow-2xl">
+          <div className="mb-1.5 font-bold">Electric collections</div>
+          <table className="w-full border-collapse">
             <thead>
               <tr>
-                <th>id</th>
-                <th>scope</th>
-                <th>status</th>
-                <th>ready</th>
-                <th>rows</th>
+                <th className={`${cell} font-semibold text-muted-foreground`}>id</th>
+                <th className={`${cell} font-semibold text-muted-foreground`}>scope</th>
+                <th className={`${cell} font-semibold text-muted-foreground`}>status</th>
+                <th className={`${cell} font-semibold text-muted-foreground`}>ready</th>
+                <th className={`${cell} font-semibold text-muted-foreground`}>rows</th>
               </tr>
             </thead>
             <tbody>
               {rows.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="muted">
+                  <td colSpan={5} className={`${cell} text-muted-foreground`}>
                     none yet
                   </td>
                 </tr>
               )}
               {rows.map((collection) => (
                 <tr key={collection.id}>
-                  <td>{collection.id}</td>
-                  <td>{collection.scope}</td>
-                  <td>{collection.status}</td>
-                  <td>{collection.ready ? 'yes' : 'no'}</td>
-                  <td>{collection.rows}</td>
+                  <td className={cell}>{collection.id}</td>
+                  <td className={cell}>{collection.scope}</td>
+                  <td className={cell}>{collection.status}</td>
+                  <td className={cell}>{collection.ready ? 'yes' : 'no'}</td>
+                  <td className={cell}>{collection.rows}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <div className="devpanel-hint">
-            Client sync logs: <code>localStorage.debug = 'ts/db:electric'</code>
+          <div className="mt-1.5 text-muted-foreground">
+            Client sync logs:{' '}
+            <code className="rounded bg-field px-1">localStorage.debug = 'ts/db:electric'</code>
           </div>
         </div>
       )}

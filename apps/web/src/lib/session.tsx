@@ -97,18 +97,18 @@ function DevSession({ children }: { children: ReactNode }) {
 
 export function Splash() {
   return (
-    <div className="splash">
-      <div className="spinner" />
+    <div className="flex h-screen items-center justify-center">
+      <div className="size-9 animate-spin rounded-full border-[3px] border-border border-t-brand" />
     </div>
   )
 }
 
 function SignInScreen() {
   return (
-    <div className="auth-screen">
-      <div className="auth-card">
-        <h1>proto zoo</h1>
-        <p>Sign in to continue</p>
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="flex flex-col items-center gap-2">
+        <h1 className="text-xl font-bold">proto zoo</h1>
+        <p className="mb-4 text-muted-foreground">Sign in to continue</p>
         <SignIn routing="hash" />
       </div>
     </div>
@@ -120,13 +120,12 @@ export function UserChip({ name, avatarUrl }: { name: string; avatarUrl: string 
     return <UserButton />
   }
   return (
-    <div className="user-chip">
-      <span className="avatar" style={avatarStyle(avatarUrl)} />
+    <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+      <span
+        className="size-[26px] shrink-0 rounded-full bg-brand bg-cover bg-center"
+        style={avatarUrl ? { backgroundImage: `url(${avatarUrl})` } : undefined}
+      />
       <span>{name}</span>
     </div>
   )
-}
-
-export function avatarStyle(url: string | null | undefined): React.CSSProperties {
-  return url ? { backgroundImage: `url(${url})` } : {}
 }
