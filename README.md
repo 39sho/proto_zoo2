@@ -314,3 +314,9 @@ npm run test:sync                              # 同期の回帰テスト（HTTP
 - **Electric が 400**: テーブル未作成の可能性。Rust API を起動してマイグレーションを流す。
 - **private チャンネルが見えない/見える**: `channel_members` の行と、`channels.visibility` を確認。
 - **リアルタイムに来ない**: `docker compose logs -f electric` と `wal_level=logical` を確認。
+
+## ライセンス
+
+MIT（`LICENSE` 参照）。同梱の絵文字データ `apps/web/public/emojibase-data/` は
+[emojibase-data](https://github.com/milesj/emojibase)（MIT, © Miles Johnson）で、同ディレクトリの
+`LICENSE` に帰属を記載しています。

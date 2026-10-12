@@ -1,6 +1,7 @@
 {
   "name": "proto-zoo2",
   "private": true,
+  "license": "MIT",
   "workspaces": [
     "apps/*"
   ],

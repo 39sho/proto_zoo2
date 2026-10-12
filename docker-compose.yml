@@ -1,3 +1,6 @@
+# Local development only. The credentials below are throwaway defaults and
+# Electric runs in insecure (plain-HTTP) mode — do NOT use this as-is in
+# production. See README for production notes.
 name: proto-zoo2
 
 services:
