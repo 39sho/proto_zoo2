@@ -1,0 +1,14 @@
+{
+  "name": "proto-zoo2",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm --workspace web run dev",
+    "build": "npm --workspace web run build",
+    "typecheck": "npm --workspace web run typecheck",
+    "test:sync": "node scripts/sync-test.mjs",
+    "server": "cargo run --manifest-path server/Cargo.toml"
+  }
+}
