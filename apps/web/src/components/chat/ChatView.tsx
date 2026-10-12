@@ -50,6 +50,15 @@ export function ChatView({
     return () => document.removeEventListener('keydown', onKey)
   }, [picker])
 
+  useEffect(() => {
+    if (!threadRootId) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setThreadRootId(null)
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [threadRootId])
+
   function openPicker(event: ReactMouseEvent<HTMLButtonElement>, messageId: string) {
     const rect = event.currentTarget.getBoundingClientRect()
     const x = Math.min(Math.max(8, rect.left), window.innerWidth - PICKER_WIDTH - 8)

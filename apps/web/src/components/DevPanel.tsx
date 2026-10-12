@@ -28,7 +28,7 @@ export function DevPanel() {
   const cell = 'max-w-[170px] truncate border-b border-border px-1.5 py-0.5 text-left'
 
   return (
-    <div className="fixed top-3 right-3 z-[80] flex flex-col items-end gap-1.5 text-[0.72rem]">
+    <div className="fixed bottom-3 left-3 z-[80] flex flex-col items-start gap-1.5 text-[0.72rem]">
       <button
         className="rounded-full border border-border bg-elevated px-2.5 py-1 text-muted-foreground hover:text-foreground"
         onClick={() => setOpen((v) => !v)}
